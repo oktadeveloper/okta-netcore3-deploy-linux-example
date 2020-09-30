@@ -29,8 +29,11 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie( op => {
-                op.Cookie.SameSite = SameSiteMode.Strict;
+            .AddCookie(options =>
+            {
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.IsEssential = true;
             })
             .AddOktaMvc(new OktaMvcOptions
             {
@@ -40,7 +43,10 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 ClientSecret = Configuration.GetValue<string>("Okta:ClientSecret"),
                 Scope = new List<string> { "openid", "profile", "email" },
             });
+            
             services.AddControllersWithViews();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
