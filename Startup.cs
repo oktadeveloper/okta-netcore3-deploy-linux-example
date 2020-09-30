@@ -88,7 +88,7 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
 
             app.UseAuthorization();
 
-            app.UseCookiePolicy();
+            // app.UseCookiePolicy();
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
