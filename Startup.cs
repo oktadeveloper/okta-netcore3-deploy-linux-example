@@ -25,8 +25,8 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
         {
             services.AddAuthentication(options =>
             {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                // options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                // options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
             .AddCookie()
             .AddOktaMvc(new OktaMvcOptions
@@ -56,8 +56,6 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
             // }
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseCookiePolicy();
 
             app.UseRouting();
 
