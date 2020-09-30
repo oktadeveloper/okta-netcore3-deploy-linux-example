@@ -40,9 +40,6 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 ClientSecret = Configuration.GetValue<string>("Okta:ClientSecret"),
                 Scope = new List<string> { "openid", "profile", "email" },
             });
-            services.ConfigureApplicationCookie(options => {
-                options.Cookie.SameSite = SameSiteMode.Strict;
-            });
             services.AddControllersWithViews();
         }
 
