@@ -57,6 +57,8 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseCookiePolicy();
+
             app.UseRouting();
 
             app.UseAuthorization();
