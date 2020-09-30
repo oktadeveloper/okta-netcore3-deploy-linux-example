@@ -30,7 +30,7 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
             .AddCookie( op => {
-                op.Cookie.SameSite = SameSiteMode.None;
+                op.Cookie.SameSite = SameSiteMode.Strict;
             })
             .AddOktaMvc(new OktaMvcOptions
             {
@@ -41,7 +41,7 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 Scope = new List<string> { "openid", "profile", "email" },
             });
             services.ConfigureApplicationCookie(options => {
-                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SameSite = SameSiteMode.Strict;
             });
             services.AddControllersWithViews();
         }
