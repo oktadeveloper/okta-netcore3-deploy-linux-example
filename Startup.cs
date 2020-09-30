@@ -29,7 +29,9 @@ namespace okta_netcore3_deploy_to_cloud_hosts_example
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie()
+            .AddCookie( op => {
+                op.Cookie.SameSite = SameSiteMode.None;
+            })
             .AddOktaMvc(new OktaMvcOptions
             {
                 // Replace these values with your Okta configuration
